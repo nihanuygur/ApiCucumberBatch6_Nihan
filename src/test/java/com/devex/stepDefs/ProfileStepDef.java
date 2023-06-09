@@ -78,12 +78,11 @@ public class ProfileStepDef {
         assertEquals(expectedName,response.path("user.name"));
         assertEquals(expectedCompany,response.path("company"));
     }
-
-    @Given("User send A POST request and logins with {string} and {string}")
-    public void userSendAPOSTRequestAndLoginsWithAnd(String email, String password) {
-        response = DevExRequest.login(email,password);
-
-    }
+//    @Given("User send A POST request and logins with {string} and {string}")
+//    public void userSendAPOSTRequestAndLoginsWithAnd(String email, String password) {
+//        response = DevExRequest.login(email, password);
+//
+//    }
 
     @Given("User sends a POST request and creates new experience with {string} , {string} , {string} , {string} , {string} , {string}")
     public void userSendsAPOSTRequestAndCreatesNewExperienceWith(String title, String company, String location, String from, String to, String current) {

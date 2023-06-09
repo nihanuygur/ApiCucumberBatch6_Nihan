@@ -1,6 +1,7 @@
 package com.devex.stepDefs;
 
 import com.devex.utilities.ConfigurationReader;
+import com.devex.utilities.Driver;
 import io.cucumber.java.Before;
 import io.cucumber.java.After;
 
@@ -17,6 +18,7 @@ public class Hooks {
     @After
     public void tearDown(){
         reset();
-        //Driver.closeDriver();
+        Driver.closeDriver();
+
     }
 }

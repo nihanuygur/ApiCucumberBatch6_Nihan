@@ -64,4 +64,16 @@ public class DataForApi {
         return experienceBody;
     }
 
+    public static Map<String,Object> addExperienceBody(String title, String company, String location, String from, String to, String current, String description){
+        Map<String,Object> addNewExperience = new HashMap<>();
+        addNewExperience.put("title",title);
+        addNewExperience.put("company",company);
+        addNewExperience.put("location",location);
+        addNewExperience.put("from",from);
+        addNewExperience.put("to",to);
+        addNewExperience.put("current",current);
+        addNewExperience.put("description",description);
+
+        return addNewExperience;
+    }
 }
