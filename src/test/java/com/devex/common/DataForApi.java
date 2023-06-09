@@ -37,5 +37,31 @@ public class DataForApi {
 
         return saveProfileBody;
     }
+    public static Map<String ,Object> postLoginBody(String email,String password){
+        Map<String,Object> loginBody=new HashMap<>();
+        loginBody.put("email",email);
+        loginBody.put("password",password);
+
+        return loginBody;
+    }
+
+    public static String postNewExperience(String title, String company, String location, String from, String to, String current){
+
+                if(current.equals("true")){
+                    to="YYYY-MM-DD";
+                }
+
+        String experienceBody ="{\n" +
+                "  \"title\": \""+title+"\",\n" +
+                "  \"company\": \""+company+"\",\n" +
+                "  \"location\": \""+location+"\",\n" +
+                "  \"from\": \""+from+"\",\n" +
+                "  \"to\": \""+to+"\",\n" +
+                "  \"current\": "+current+",\n" +
+                "  \"description\": \"string\"\n" +
+                "}";
+
+        return experienceBody;
+    }
 
 }

@@ -48,4 +48,33 @@ public class DevExRequest {
                 .post(ConfigurationReader.get("postRegisterUser"));
         return response;
     }
+
+    public static Response login(String email,String password){
+
+        response = given().accept(ContentType.JSON)
+                .and()
+                .contentType(ContentType.JSON)
+                .and()
+                .body(DataForApi.postLoginBody(email,password))
+                .when()
+                .post(ConfigurationReader.get("postLogin"));
+
+        return response;
+    }
+
+    public static Response postExperience(String title, String company, String location, String from, String to, String current){
+
+        response = given().accept(ContentType.JSON)
+                .and()
+                .contentType(ContentType.JSON)
+                .header("x-auth-token",ConfigurationReader.get("userNewToken"))
+                .and()
+                .body(DataForApi.postNewExperience(title,company,location,from,to,current))
+                .when()
+                .post(ConfigurationReader.get("postAddProfileExperience"));
+
+                return response;
+    }
+
+
 }

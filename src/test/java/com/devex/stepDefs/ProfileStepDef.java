@@ -9,7 +9,7 @@ import io.cucumber.java.en.Then;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
-import static io.restassured.RestAssured.given;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -54,18 +54,7 @@ public class ProfileStepDef {
 
     @Given("User sends a POST request with {string} and {string} and {string} and {string} and {string} and {string}")
     public void userSendsAPOSTRequestWithAndAndAndAndAnd(String email, String password, String name, String google, String facebook, String github) {
-
-//        response = given().accept(ContentType.JSON)
-//                .and()
-//                .contentType(ContentType.JSON)
-//                .body(DataForApi.registerUserBody(email, password, name, google, facebook, github))
-//                .when()
-//                .post(ConfigurationReader.get("postRegisterUser"));
         response= DevExRequest.postRegisterUser(email,password,name,google,facebook,github);
-
-        System.out.println("response.path(\"token\") = " + response.path("token"));
-
-
     }
 
     @Then("Verify that body contains {string}")
@@ -89,4 +78,16 @@ public class ProfileStepDef {
         assertEquals(expectedName,response.path("user.name"));
         assertEquals(expectedCompany,response.path("company"));
     }
+
+    @Given("User send A POST request and logins with {string} and {string}")
+    public void userSendAPOSTRequestAndLoginsWithAnd(String email, String password) {
+        response = DevExRequest.login(email,password);
+
+    }
+
+    @Given("User sends a POST request and creates new experience with {string} , {string} , {string} , {string} , {string} , {string}")
+    public void userSendsAPOSTRequestAndCreatesNewExperienceWith(String title, String company, String location, String from, String to, String current) {
+        response = DevExRequest.postExperience(title,company,location,from,to,current);
+    }
+
 }

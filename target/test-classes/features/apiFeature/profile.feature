@@ -21,11 +21,25 @@ Feature: Retrieving All Profiles
       | 34 | Blg              | Amazon    | Dortmund |
       | 29 | oyku             | Microsoft | Germany  |
 
-    @wip
-    Scenario: Register User
-      Given User sends a POST request with "nhntsc1234567890@gmail.com" and "N12345!" and "Nihan" and "google" and "facebook" and "github"
-      Then Verify that status code is 200
-      Then Verify that body contains "token"
-      And User sends a POST request with "BMW" and "www.bmw.com" and "Berlin" and "Tester" and "Java" and "Bgit" and "B" and "B" and "B" and "B" and "B"
-      Then Verify that status code is 200
-      Then Verify that user's information, name is "Nihan" and company is "BMW"
+
+  Scenario: Register User
+    Given User sends a POST request with "nhntsc12345678901@gmail.com" and "N12345!" and "Nihan" and "google" and "facebook" and "github"
+    Then Verify that status code is 200
+    Then Verify that body contains "token"
+    And User sends a POST request with "BMW" and "www.bmw.com" and "Berlin" and "Tester" and "Java" and "Bgit" and "B" and "B" and "B" and "B" and "B"
+    Then Verify that status code is 200
+    Then Verify that user's information, name is "Nihan" and company is "BMW"
+
+
+  Scenario Outline: Login as different users
+    Given User send A POST request and logins with "<email>" and "<password>"
+    Then Verify that status code is <statusCode>
+    Then Verify that body contains "token"
+    Examples:
+      | email            | password | statusCode |
+      | nhntsc@gmail.com | N12345!  | 200        |
+
+
+
+
+
