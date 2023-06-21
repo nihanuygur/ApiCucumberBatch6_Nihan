@@ -105,4 +105,29 @@ public class DevExRequest {
 
         return response;
     }
+
+    public static Response postNewPostRequest(String title, String text) {
+
+        response = given().accept(ContentType.JSON)
+                .and()
+                .contentType(ContentType.JSON)
+                .header("x-auth-token", ConfigurationReader.get("token"))
+                .body(DataForApi.addNewPostBody(title, text))
+                .when()
+                .post(ConfigurationReader.get("postNewPost"));
+
+        return response;
+    }
+
+    public static Response getPostWithID(int id){
+        response = given().accept(ContentType.JSON)
+                .and()
+                .contentType(ContentType.JSON)
+                .header("x-auth-token",ConfigurationReader.get("token"))
+                .pathParam("id",id)
+                .when()
+                .get(ConfigurationReader.get("getPostWithID"));
+
+        return response;
+    }
 }

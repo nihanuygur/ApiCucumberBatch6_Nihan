@@ -16,7 +16,6 @@ import static org.junit.Assert.assertEquals;
 public class ExperienceStepDef {
     Response response;
 
-    Map<String, Object> token;
     int id;
 
     @Given("User send A POST request and logins with {string} and {string}")
@@ -52,16 +51,15 @@ public class ExperienceStepDef {
         new LoginPage().setup();
     }
 
-    @Then("Verify that UI experience and API experience fot the {string} should match")
+    @Then("Verify that UI experience and API experience for the {string} should match")
     public void verifyThatUIExperienceAndAPIExperienceFotTheShouldMatch(String company) {
         // from UI
-
-        String actualCompanyFromUi=new LoginPage().getNewCompanyName(company);
+        String actualCompanyFromUi = new LoginPage().getNewCompanyName(company);
 
         // from API
-           String actualCompanyFromAPi = response.path("company");
+        String actualCompanyFromAPi = response.path("company");
 
         // compare
-        assertEquals(actualCompanyFromAPi,actualCompanyFromUi);
+        assertEquals(actualCompanyFromAPi, actualCompanyFromUi);
     }
 }

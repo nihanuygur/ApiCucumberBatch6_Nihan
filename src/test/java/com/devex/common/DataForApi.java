@@ -76,4 +76,17 @@ public class DataForApi {
 
         return addNewExperience;
     }
+    /*
+    {
+  "title": "string",
+  "text": "string"
+}
+     */
+    public static Map<String,Object> addNewPostBody(String title,String text){
+        Map<String,Object> postBody=new HashMap<>();
+        postBody.put("title",title);
+        postBody.put("text",text);
+
+        return postBody;
+    }
 }
